@@ -4,9 +4,9 @@ import java.util.Scanner;
 class QuickSort{
     void swap(int[] arr, int i, int j)
        {
-           int temp = arr[i];
+           int tempVar = arr[i];
            arr[i] = arr[j];
-           arr[j] = temp;
+           arr[j] = tempVar;
        }
     int partition(int arr[] ,int pivot, int high, int low) {
         int i = (low - 1);

@@ -79,3 +79,61 @@ The Sorted Array are
 5 10 20 30 90 
 */
 
+
+// Ques 3. WAP to sort an array using Bubble Sort Algorithm.
+
+import java.util.Scanner;
+class BubbleSort
+{
+    void swap(int[] ar,int j)
+    {
+           int temp = ar[j];
+           ar[j] = ar[j+1];
+           ar[j+1] = temp;
+    }
+    void BSArray(int[] ar,int num) 
+    {
+		 for (int i=0; i<num-1; i++)
+	            for (int j = 0; j<num-i-1; j++)
+	                if (ar[j] > ar[j+1])
+	                  swap(ar,j);
+    }
+}
+
+class QuesThree {
+
+   public static void main(String[] args) {
+       Scanner scan=new Scanner(System.in);
+         System.out.println("Enter size of Array :");
+         int num =scan.nextInt();
+         
+         int[] ar = new int[num];
+         //Storing the value of array
+         System.out.println("Enter the values of Array :");
+         for(int i=0;i<num;i++)
+             ar[i]=scan.nextInt();
+             
+         // Here "BS" is the object of BubbleSort   
+         BubbleSort BS=new BubbleSort();
+         BS.BSArray(ar,num);
+         
+         //Printing the array
+         System.out.println("The Sorted Array are : ");
+         for(int element:ar)
+             System.out.print(element+" ");
+   }
+}
+
+//Output
+
+/*
+Enter size of Array :
+5
+Enter the values of Array :
+90 80 100 290 55
+The Sorted Array are : 
+55 80 90 100 290 
+*/
+
+
+

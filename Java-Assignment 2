@@ -1,0 +1,66 @@
+
+
+import java.util.Scanner;
+class QuickSort{
+    void swap(int[] arr, int i, int j)
+       {
+           int temp = arr[i];
+           arr[i] = arr[j];
+           arr[j] = temp;
+       }
+    int partition(int arr[] ,int pivot, int high, int low) {
+        int i = (low - 1);
+         
+           for (int j = low; j <= high - 1; j++) {
+     
+               // If current element is smaller
+               // than the pivot then we need to move it to left hence we will use "i" for that
+               if (arr[j] < pivot) {
+     
+                   // Increment index of
+                   // smaller element
+                   i++;
+                   swap(arr, i, j);
+               }
+           }
+           swap(arr, i + 1, high);
+           return (i + 1);
+    }
+    void quickSortArray(int[] arr,int low,int high) {
+        if (low < high) {
+             
+               // pi is partitioning index, arr[p],that is we are getting index of pivot element
+               
+               int pi = partition(arr,arr[high],high,low);
+     
+               // Separately sort elements before
+               // partition and after partition
+               quickSortArray(arr, low, pi - 1);
+               quickSortArray(arr, pi + 1, high);
+           }
+        
+        
+    }
+}
+
+class QuesTwo {
+
+   public static void main(String[] args) {
+       Scanner scan=new Scanner(System.in);
+         System.out.println("Enter size of Array :");
+         int num =scan.nextInt();
+         int[] a = new int[num];
+         System.out.println("Enter the values of Array :");
+         for(int i=0;i<num;i++) {
+             a[i]=scan.nextInt();
+         }
+         QuickSort QS=new QuickSort();
+         QS.quickSortArray(a,0,num-1);
+         System.out.println("The Sorted Array are");
+         for(int element:a) {
+             System.out.print(element+" ");
+         }
+
+   }
+}
+

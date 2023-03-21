@@ -1,42 +1,42 @@
 
 
+// Ques 2. WAP to sort an array using Quick Sort Algorithm.
+
 import java.util.Scanner;
 class QuickSort{
-    void swap(int[] arr, int i, int j)
+    void swap(int[] ar, int i, int j)
        {
-           int tempVar = arr[i];
-           arr[i] = arr[j];
-           arr[j] = tempVar;
+           int tempVar = ar[i];
+           ar[i] = ar[j];
+           ar[j] = tempVar;
        }
-    int partition(int arr[] ,int pivot, int high, int low) {
+    int partition(int ar[] ,int pivot, int high, int low) {
         int i = (low - 1);
          
            for (int j = low; j <= high - 1; j++) {
      
-               // If current element is smaller
+               // If the current element is smaller
                // than the pivot then we need to move it to left hence we will use "i" for that
-               if (arr[j] < pivot) {
-     
-                   // Increment index of
+               if (ar[j] < pivot) {
+                   // Incrementing index of
                    // smaller element
                    i++;
-                   swap(arr, i, j);
+                   swap(ar, i, j);
                }
            }
-           swap(arr, i + 1, high);
+           swap(ar, i + 1, high);
            return (i + 1);
     }
-    void quickSortArray(int[] arr,int low,int high) {
+    void quickSortArray(int[] ar,int low,int high) {
         if (low < high) {
              
-               // pi is partitioning index, arr[p],that is we are getting index of pivot element
-               
-               int pi = partition(arr,arr[high],high,low);
+               // here pi is partitioning index
+               int pi = partition(ar,ar[high],high,low);
      
-               // Separately sort elements before
+               // Individually sorting the elements before
                // partition and after partition
-               quickSortArray(arr, low, pi - 1);
-               quickSortArray(arr, pi + 1, high);
+               quickSortArray(ar, low, pi - 1);
+               quickSortArray(ar, pi + 1, high);
            }
         
         
@@ -49,18 +49,33 @@ class QuesTwo {
        Scanner scan=new Scanner(System.in);
          System.out.println("Enter size of Array :");
          int num =scan.nextInt();
-         int[] a = new int[num];
+         
+         int[] ar = new int[num];
+         //Storing the value of array
          System.out.println("Enter the values of Array :");
-         for(int i=0;i<num;i++) {
-             a[i]=scan.nextInt();
-         }
+         for(int i=0;i<num;i++)
+             ar[i]=scan.nextInt();
+             
+         // Here "QS" is the object of QuickSort   
          QuickSort QS=new QuickSort();
-         QS.quickSortArray(a,0,num-1);
+         QS.quickSortArray(ar,0,num-1);
+         
+         //Printing the array
          System.out.println("The Sorted Array are");
-         for(int element:a) {
+         for(int element:ar)
              System.out.print(element+" ");
-         }
-
    }
 }
+
+
+
+//Output
+
+/*
+Enter size of Array :
+5
+Enter the values of Array :10 30 20 90 5
+The Sorted Array are
+5 10 20 30 90 
+*/
 

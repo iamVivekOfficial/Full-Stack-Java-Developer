@@ -216,3 +216,66 @@ The Sorted Array are :
 10 20 36 67 90 
 */
 
+
+
+//Ques 5. WAP to sort an array using Selection Sort Algorithm.
+
+import java.util.Scanner;
+class SelectionSort
+{   // Swap the found minimum element with the first element
+    void swap(int[] ar, int min_idx, int i)
+       {
+           int temp = ar[min_idx];
+			ar[min_idx] = ar[i];
+			ar[i] = temp;
+       }
+	void sort(int ar[])
+	{
+		int n = ar.length;
+		// One by one move boundary of unsorted subarray
+		for (int i = 0; i < n-1; i++)
+		{
+			// Find the minimum element in unsorted array
+			int min_idx = i;
+			for (int j = i+1; j < n; j++)
+				if (ar[j] < ar[min_idx])
+					min_idx = j;
+			// Calling the "swap" function
+			swap(ar,min_idx,i);
+		}
+	}
+}
+
+class QuesFive {
+
+   public static void main(String[] args) {
+       Scanner scan=new Scanner(System.in);
+         System.out.println("Enter size of Array :");
+         int num =scan.nextInt();
+         
+         int[] ar = new int[num];
+         //Storing the value of array
+         System.out.println("Enter the values of Array :");
+         for(int i=0;i<num;i++)
+             ar[i]=scan.nextInt();
+             
+         // Here "SS" is the object of SelectionSort   
+         SelectionSort SS = new SelectionSort();
+         SS.sort(ar);
+         
+         //Printing the array
+         System.out.println("The Sorted Array are : ");
+         for(int element:ar)
+             System.out.print(element+" ");
+   }
+}
+
+//Output
+/*
+Enter size of Array :
+5
+Enter the values of Array :
+89 87 76 50 12
+The Sorted Array are : 
+12 50 76 87 89 
+*/

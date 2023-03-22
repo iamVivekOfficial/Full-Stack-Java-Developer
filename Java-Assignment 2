@@ -136,4 +136,83 @@ The Sorted Array are :
 */
 
 
+//Ques 4. WAP to sort an array using Merge Sort Algorithm.
+
+import java.util.Scanner;
+class MergeSort 
+{
+	public static void sort(int ar[],int start,int end)
+	{
+		if(start>=end)
+			return;
+		
+		int mid =start+(end-start)/2;
+		sort(ar,start,mid);
+		sort(ar,mid+1,end);
+		merge(ar,start,mid,end);
+	}
+	public static void merge(int ar[],int start,int mid,int end)
+	{
+		int merged[]= new int[end-start+1];
+		int index1=start;
+		int index2=mid+1;
+		int x=0;
+		
+		while(index1<=mid && index2<=end)
+		{
+			if(ar[index1]<=ar[index2])
+				merged[x++]=ar[index1++];
+			else
+				merged[x++]=ar[index2++];
+		}
+		
+		while(index1<=mid)
+		{
+			merged[x++]=ar[index1++];
+		}
+		while(index2<=end)
+		{
+			merged[x++]=ar[index2++];
+		}
+		
+		for(int i=0,j=start;i<merged.length;i++,j++)
+		{		
+			ar[j]=merged[i];
+		}
+	}
+	
+
+}
+class QuesFour {
+
+   public static void main(String[] args) {
+       Scanner scan=new Scanner(System.in);
+         System.out.println("Enter size of Array :");
+         int num =scan.nextInt();
+         
+         int[] ar = new int[num];
+         //Storing the value of array
+         System.out.println("Enter the values of Array :");
+         for(int i=0;i<num;i++)
+             ar[i]=scan.nextInt();
+             
+         // Here "MS" is the object of MergeSort   
+         MergeSort MS=new MergeSort();
+         MS.sort(ar,0,num-1);
+         
+         //Printing the array
+         System.out.println("The Sorted Array are : ");
+         for(int element:ar)
+             System.out.print(element+" ");
+   }
+}
+
+//Output
+/*
+Enter size of Array :
+5
+Enter the values of Array :10 20 67 90 36
+The Sorted Array are : 
+10 20 36 67 90 
+*/
 

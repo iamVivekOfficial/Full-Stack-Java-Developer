@@ -1,3 +1,72 @@
+// Ques 1. WAP to find the duplicates present in an array.
+
+import java.util.*;
+import java.util.Scanner;
+class DuplicateArray 
+{
+	static void findDuplicates(int arr[], int len)
+	{
+		boolean ifPresent = false;
+		// ArrayList to store the output
+		ArrayList<Integer> al = new ArrayList<Integer>();
+
+		for (int i = 0; i < len - 1; i++) 
+		{
+			for (int j = i + 1; j < len; j++) 
+			{
+				if (arr[i] == arr[j]) 
+				{
+					// checking if element is present in the ArrayList or not if present then break
+					if (al.contains(arr[i]))
+						break;
+					// if element is not present in the ArrayList then add // it to ArrayList and make ifPresent at true
+					else 
+					{
+						al.add(arr[i]);
+						ifPresent = true;
+					}
+				}
+			}
+		}
+
+		// if duplicates is present then print ArrayList
+		if (ifPresent == true) {
+			System.out.print(al + " "+ " are duplicate elements present in the array.");
+		}
+		else {
+			System.out.print(
+				"No duplicates elements present in arrays");
+		}
+	}
+}
+
+class QuesOne {
+
+   public static void main(String[] args) {
+       Scanner scan=new Scanner(System.in);
+         System.out.println("Enter size of Array :");
+         int num =scan.nextInt();
+         
+         int[] ar = new int[num];
+         //Storing the value of array
+         System.out.println("Enter the values of Array :");
+         for(int i=0;i<num;i++)
+             ar[i]=scan.nextInt();
+             
+         // Here "DA" is the object of DuplicateArray   
+         DuplicateArray DA=new DuplicateArray();
+         DA.findDuplicates(ar,num);
+   }
+}
+
+//Output
+
+/*
+Enter size of Array :7
+Enter the values of Array :
+90 98 67 65 98 45 65
+[98, 65]  are duplicate elements present in the array.
+*/
 
 
 // Ques 2. WAP to sort an array using Quick Sort Algorithm.
@@ -10,11 +79,12 @@ class QuickSort{
            ar[i] = ar[j];
            ar[j] = tempVar;
        }
-    int partition(int ar[] ,int pivot, int high, int low) {
+    int partition(int ar[] ,int pivot, int high, int low) 
+    {
         int i = (low - 1);
          
-           for (int j = low; j <= high - 1; j++) {
-     
+           for (int j = low; j <= high - 1; j++) 
+	   {
                // If the current element is smaller
                // than the pivot then we need to move it to left hence we will use "i" for that
                if (ar[j] < pivot) {
@@ -279,3 +349,76 @@ Enter the values of Array :
 The Sorted Array are : 
 12 50 76 87 89 
 */
+
+
+// Ques 6. WAP to check whether an array is a subset of another array.
+
+import java.util.Scanner;
+class SubArray {
+
+	//Return true if arr2[] is a subset of arr1[] 
+	static boolean isSubset(int ar1[], int ar2[], int m, int n)
+	{
+		int i = 0;
+		int j = 0;
+		for (i = 0; i < n; i++) {
+			for (j = 0; j < m; j++)
+				if (ar2[i] == ar1[j])
+					break;
+
+			if (j == m)
+				return false;
+		}
+		//If we reach here then all elements of ar2[] are present in ar1[]
+		return true;
+	}
+}
+
+
+class QuesSix {
+
+   public static void main(String[] args) {
+       Scanner scan=new Scanner(System.in);
+         System.out.println("Enter size of Array_1 :");
+         int num1 =scan.nextInt();
+         
+         int[] ar1 = new int[num1];
+         //Storing the value of array_1
+         System.out.println("Enter the values of Array_1 :");
+         for(int i=0;i<num1;i++)
+             ar1[i]=scan.nextInt();
+           
+         System.out.println("Enter size of Array_2 :");
+         int num2 =scan.nextInt();
+         
+         int[] ar2 = new int[num2];
+         //Storing the value of array_2
+         System.out.println("Enter the values of Array_2 :");
+         for(int i=0;i<num2;i++)
+             ar2[i]=scan.nextInt();
+           
+         // Here "SA" is the object of SubArray   
+         SubArray SA = new SubArray();
+         //SA.isSubset(ar1,ar2,m,n);
+         
+         if (SA.isSubset(ar1, ar2, num1, num2))
+		System.out.print("Array_2 is subset of Array_1 ");
+	 else
+		System.out.print("Array_2 is not a subset of Array_1");
+   }
+}
+
+//Output
+
+/*
+Enter size of Array_1 :
+5
+Enter the values of Array_1 :
+7 9 5 3 8
+Enter size of Array_2 :
+2
+Enter the values of Array_2 :
+3 8
+Array_2 is subset of Array_1 
+*/
+

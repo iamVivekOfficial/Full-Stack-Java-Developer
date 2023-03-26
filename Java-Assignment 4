@@ -1,4 +1,4 @@
-//1. WAP to remove Duplicates from a String.(Take any String ex with duplicates character)
+//Ques 1. WAP to remove Duplicates from a String.(Take any String ex with duplicates character)
 
 import java.util.*;
 public class RemoveDuplicates {
@@ -31,3 +31,40 @@ String with Duplicate characters : aaabaababbccbccd
 String without Duplicate characters : abcd
 */
 
+
+
+
+//Ques 2. WAP to print Duplicates characters from the String.
+
+import java.util.*;
+public class DuplicateCharacters {  
+    public static void main(String[] args) {  
+       String str = "aaabaababbccbccd";
+       System.out.println("Given string: "+str);
+       int count;   
+       char s[] = str.toCharArray();  
+         
+       System.out.print("Duplicate characters in a given string: ");    
+       for(int i = 0; i <s.length; i++) {  
+           count = 1;  
+           for(int j = i+1; j <s.length; j++) {  
+               if(s[i] == s[j] && s[i] != ' ') {  
+                   count++;   
+                   s[j] = '0';  
+               }  
+           }  
+           if(count > 1 && s[i] != '0')  
+               System.out.print(s[i]);  
+       }  
+   }  
+}  
+
+
+
+
+//Output
+
+/*
+Given string: aaabaababbccbccd
+Duplicate characters in a given string: abc
+*/

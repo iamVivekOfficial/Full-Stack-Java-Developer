@@ -68,3 +68,47 @@ public class DuplicateCharacters {
 Given string: aaabaababbccbccd
 Duplicate characters in a given string: abc
 */
+
+
+
+
+//Ques 3. WAP to check if “2552” is palindrome or not.
+
+import java.util.*;
+
+public class CheckPalindrome
+{
+	static int reverseDigits(int n)
+	{
+		int reverse_num = 0;
+		while (n > 0) {
+			reverse_num = reverse_num * 10 + n % 10;
+			n = n / 10;
+		}
+		return reverse_num;
+	}
+	
+	static int isPalindrome(int n)
+	{
+		int reverse_num = reverseDigits(n);
+		if (reverse_num == n)
+			return 1;
+		else
+			return 0;
+	}
+	public static void main(String []args)
+	{
+		int n = 2552;
+		System.out.println( n  + (isPalindrome(n) == 1 ? " is a Palindrome number " : " is not a Palindrome number "));
+
+	}
+
+}
+
+//Output
+
+/*
+
+2552 is a Palindrome number 
+
+*/

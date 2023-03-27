@@ -120,7 +120,7 @@ public class CheckPalindrome
 
 import java.io.*;
 
-public class CVS {
+public class Demo {
 	static void countCharacterType(String str)
 	{
 		int vowels = 0, consonant = 0, specialChar = 0,
@@ -291,5 +291,45 @@ public class UniqueC {
 /*
 
 The String 'ineuro' has all unique characters
+
+*/
+
+
+//Ques 8. WAP to find the maximum occurring character in a String.
+
+import java.util.*;
+    public class MaxOccurringChar  {
+    static final int ASCII_SIZE = 256;
+    static char getMaxOccurringChar(String str)
+    {
+        int count[] = new int[ASCII_SIZE];
+ 
+        for (int i = 0; i < str.length(); i++)
+            count[str.charAt(i)]++;
+ 
+        int max = -1; 
+        char result = ' '; 
+
+        for (int i = 0; i < str.length(); i++) {
+            if (max < count[str.charAt(i)]) {
+                max = count[str.charAt(i)];
+                result = str.charAt(i);
+            }
+        }
+ 
+        return result;
+    }
+    public static void main(String[] args)
+    {
+        String str = "Hey vivek";
+        System.out.println("In String " + "'"+str +"'"+  " --> "+ getMaxOccurringChar(str) + " is the max occurring character.");
+    }
+}
+
+
+//Output
+/*
+
+In String 'Hey vivek' --> e is the max occurring character.
 
 */

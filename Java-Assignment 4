@@ -213,3 +213,50 @@ The two strings are anagram of each other
 
 */
 
+
+//Ques 6. WAP to implement Pangram Checking with least inbuilt methods being used.
+
+import java.io.*;
+public class Pangram 
+{
+	public static boolean checkPangram(String str)
+	{
+		boolean[] mark = new boolean[26];
+
+		int index = 0;
+		for (int i = 0; i < str.length(); i++) 
+		{
+			if ('A' <= str.charAt(i) && str.charAt(i) <= 'Z')
+				index = str.charAt(i) - 'A';
+			else if ('a' <= str.charAt(i) && str.charAt(i) <= 'z')
+				index = str.charAt(i) - 'a';
+			else
+				continue;
+			mark[index] = true;
+		}
+		for (int i = 0; i <= 25; i++)
+			if (mark[i] == false)
+				return (false);
+
+		return (true);
+	}
+
+
+	public static void main(String[] args)
+	{
+		String str = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG";
+
+		if (checkPangram(str) == true)
+			System.out.print("'"+str + "'"+" is a Pangram.");
+		else
+			System.out.print("'"+str + "'"+" is not a Pangram.");
+	}
+}
+
+//Output
+/*
+
+'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG' is a Pangram.
+
+*/
+

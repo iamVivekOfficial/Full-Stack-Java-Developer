@@ -168,3 +168,48 @@ Digit: 3
 Special Character: 3
 
 */
+
+
+
+//Ques 5. WAP to implement Anagram Checking least inbuilt methods being used.
+
+import java.io.*;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Anagram {
+	static boolean areAnagram(char[] str1, char[] str2)
+	{
+		if (str1.length != str2.length)
+			return false;
+
+		Arrays.sort(str1);
+		Arrays.sort(str2);
+		for (int i = 0; i < str1.length; i++)
+			if (str1[i] != str2[i])
+				return false;
+
+		return true;
+	}
+	public static void main(String args[])
+	{
+		char str1[] = { 'l', 'i', 's', 't','e','n' };
+		char str2[] = { 's', 'i', 'l','e','n','t'};
+	
+		if (areAnagram(str1, str2))
+			System.out.println("The two strings are"
+							+ " anagram of each other");
+		else
+			System.out.println("The two strings are not"
+							+ " anagram of each other");
+	}
+}
+
+//Output
+
+/*
+
+The two strings are anagram of each other
+
+*/
+
